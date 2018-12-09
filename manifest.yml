@@ -1,0 +1,6 @@
+applications:
+- name: ganesh
+  buildpack: java_buildpack
+  health-check-type: port
+  memory: 1024M
+    
