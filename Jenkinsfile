@@ -28,12 +28,12 @@ stage("uploading ${artifactName}"){
 }
 stage('deploy'){
     withCredentials([usernamePassword(credentialsId: '1d665af0-8baf-4317-8452-51ebfe264136', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-    bat '''
+    bat """
     
     cf login --skip-ssl-validation -a https://api.run.pivotal.io/ -u %USERNAME% -p %PASSWORD% -o DevOps_007 -s development
     cf push ganesh -p target\\${artifactName} -f manifest.yml -n ganesh-devops-007 -d apps.internal
     cf logout
-    '''
+    """
     }
 }
 }
